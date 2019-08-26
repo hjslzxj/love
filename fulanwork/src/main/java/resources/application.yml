@@ -1,0 +1,35 @@
+server:
+    port: 8080
+    session-timeout: 30
+    tomcat.max-threads: 10
+    tomcat.uri-encoding: UTF-8
+
+#spring配置：配置thymeleaf（这样配置后，再代码中返回到那个页面就不用写过多的前缀和后缀了，达到简化效果）
+spring:
+  thymeleaf:
+      prefix: classpath:/templates/    
+      suffix: .html    
+      mode: HTML5    
+      encoding: UTF-8    
+      content-type: text/html    
+      cache: false
+ 
+#配置数据库相关信息（注意datasource的层级是在spring下）    
+datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root    
+    password: root   
+    initial-size: 10    
+    max-active: 20    
+    max-idle: 8    
+    min-idle: 8
+    
+jpa:
+    database: mysql
+    show-sql: true    
+    hibernate:      
+    ddl-auto: update      
+    naming:        
+    physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy    
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect 
